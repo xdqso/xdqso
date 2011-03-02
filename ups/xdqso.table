@@ -1,0 +1,3 @@
+setupRequired("idlutils")
+envPrepend(IDL_PATH, +${PRODUCT_DIR}/pro)
+envSet(XDQSODATA, ${PRODUCT_DIR}/data)
