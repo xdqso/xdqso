@@ -6,7 +6,7 @@
 ; CALLING SEQUENCE:
 ;   vers = xdqso_version()
 ; OUTPUTS:
-;   vers       - Version name for the product template
+;   vers       - Version name for the product xdqso
 ; COMMENTS:
 ;   Requires that the XDQSO_DIR environment variable be set
 ; VERSION:
