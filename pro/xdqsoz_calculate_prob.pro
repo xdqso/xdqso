@@ -4,6 +4,8 @@
 ;   PURPOSE:
 ;      calculate the extreme-deconvolution probability ratio,
 ;      marginalizing over an arbitrary redshift range
+;   USE:
+;      out= xdqsoz_calculate_prob(in,zmin,zmax,/deredenned,/galex,/ukidss)
 ;   INPUT:
 ;      in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION
 ;      zmin, zmax - lower, upper bound of redshift interval

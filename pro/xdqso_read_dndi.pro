@@ -1,3 +1,19 @@
+;+
+;   NAME:
+;      xdqso_read_dndi
+;   PURPOSE:
+;      read the dndi number count prior files
+;   INPUT:
+;      filename - name of the file that holds the prior
+;   KEYWORDS:
+;      correct - correct the nunber counts for SDSS incompleteness
+;      attenuate - attenuate the number counts
+;      everythingcorrect - de-correct the number counts for SDSS incompleteness
+;   OUTPUT:
+;      i, dndi - i-mag and dndi number count prior (for xdqso_eval_iprob)
+;   HISTORY:
+;      2010 - Written - Bovy
+;-
 PRO XDQSO_READ_DNDI, filename, i, dndi, correct=correct, attenuate=attenuate, $
                      everythingcorrect=everythingcorrect
 _CORRECTMEAN= 21.9

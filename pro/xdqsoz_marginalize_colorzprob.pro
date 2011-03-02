@@ -4,6 +4,8 @@
 ;   PURPOSE:
 ;      marginalize the probability of a relative flux + redshift
 ;      (*not* a color) over redshift
+;   USE:
+;      arr= xdqsoz_marginalize_colorzprob(z_min, z_max, flux, flux_ivar,/galex,/ukidss,norm=norm,/log)
 ;   INPUT:
 ;      z_min, z_max - redshift
 ;      flux - [5] or [5,ndata] array of fluxes

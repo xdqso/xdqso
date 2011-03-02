@@ -1,3 +1,4 @@
+;   convert fluxes to asinh mags (f=flux, b=softening)
 FUNCTION xdqso_sdss_flux2mags, f, b
 
 a = 1.08574

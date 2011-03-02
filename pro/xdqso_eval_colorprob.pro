@@ -1,3 +1,22 @@
+;+
+;   NAME:
+;      xdqso_eval_colorprob
+;   PURPOSE:
+;      evaluate the relative flux likelihood for various classes
+;   INPUT:
+;      flux - dereddened flux
+;      flux_ivar - dereddened flux_ivar
+;   KEYWORDS:
+;      qso - class qso (hiz by default)
+;      lowz - low-z quasars
+;      bossz - mid-z quasars;
+;      galex - use GALEX
+;      ukidss - use UKIDSS
+;   OUTPUT:
+;      likelihood
+;   HISTORY:
+;      2010 - Written - Bovy (NYU)
+;-
 FUNCTION XDQSO_EVAL_COLORPROB, flux, flux_ivar, qso=qso, lowz=lowz, $
                                midz=midz, galex=galex, ukidss=ukidss
 ;;check for environment variable

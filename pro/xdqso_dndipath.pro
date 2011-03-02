@@ -1,3 +1,17 @@
+;+
+;   NAME:
+;      xdqso_dndipath
+;   PURPOSE:
+;      return the path to the file that contains the number count
+;      prior for a given redshift interval
+;   INPUT:
+;      zmin, zmax - minimum and maximum redshift
+;      lumfunc - luminosity function
+;   OUTPUT:
+;      path
+;   HISTORY:
+;      2010 - Written - Bovy (NYU)
+;-
 FUNCTION XDQSO_DNDIPATH, zmin, zmax, lumfunc
 ;;check for environment variable
 path= getenv('XDQSODATA')

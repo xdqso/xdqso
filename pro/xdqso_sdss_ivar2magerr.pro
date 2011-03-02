@@ -1,4 +1,5 @@
-; Converts ivars to magnitude errors
+; Converts ivars to magnitude errors, ivar=inverse variance on flux,
+; F=flux, b=softening
 
 FUNCTION xdqso_sdss_ivar2magerr, ivar, F, b
 

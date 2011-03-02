@@ -3,6 +3,8 @@
 ;      xdqso_calculate_prob
 ;   PURPOSE:
 ;      calculate the extreme-deconvolution XDQSO QSO probability
+;   USE:
+;      out= xdqso_calculate_prob(in,/dereddened)
 ;   INPUT:
 ;      in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION
 ;   KEYWORDS:

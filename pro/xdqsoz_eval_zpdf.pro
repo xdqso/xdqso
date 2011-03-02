@@ -4,6 +4,8 @@
 ;   PURPOSE:
 ;      evaluate the photometric redshift PDF for a given redshift
 ;      given means, covars, and amps
+;   USE:
+;      pz= xdqsoz_eval_zpdf(z,zmean,zcovar,zamp)
 ;   INPUT:
 ;      z - redshift [nz]
 ;      zmean, zcovar, zamp - from xdqsoz_zpdf.pro

@@ -1,3 +1,4 @@
+;   dereddened a flux
 FUNCTION xdqso_sdss_deredden, flux, extinction
 exponent = 0.4*extinction
 flux_correct = (10.0^exponent)*flux

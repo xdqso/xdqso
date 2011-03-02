@@ -1,4 +1,4 @@
-; Converts ivars to magnitude errors
+; Converts ivars to magnitude errors, F=flux
 FUNCTION xdqso_ivar2magerr, ivar, F
 a= 1.08574
 dm = 0.0*ivar

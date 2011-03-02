@@ -3,6 +3,9 @@
 ;      xdqsoz_zpdf
 ;   PURPOSE:
 ;      calculate the photometric redshift pdf for XDQSOZ
+;   USE:
+;      xdqsoz_zpdf, flux, flux_ivar, /galex, /ukidss, zmean=zmean,
+;      zcovar=zcovar, zamp=zamp
 ;   INPUT:
 ;      flux - [nfluxes-1] or [nfluxes-1,ndata] array of fluxes
 ;      flux_ivar - [nfluxes-1] or [nfluxes-1,ndata] array of flux_ivars
