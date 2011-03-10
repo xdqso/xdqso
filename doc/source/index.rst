@@ -140,7 +140,7 @@ Contents:
 
 **xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)
 
-	*marginalize the probability of a relative flux + redshift (*not* a color) over redshift*
+	*marginalize the probability of a relative flux + redshift (not a color) over redshift*
 
 	Input:
 
