@@ -150,10 +150,6 @@ Contents:
 
 		flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars
 	
-	Optional Input:
-	
-		norm - normalization factor (if precomputed by calling this function before with zmin=0.3 and zmax=5.5)
-
 	Keywords:
 
 		galex - use GALEX fits
@@ -165,6 +161,10 @@ Contents:
 	Output:
 
 		number or array of probabilities
+
+	Optional Output:
+	
+		norm - normalization factor (likelihood marginalized over redshift 0 to infinity)
 
 	History:
 
