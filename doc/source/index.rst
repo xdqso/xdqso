@@ -31,7 +31,7 @@ To download the code use either
 
 .. code-block:: none
 
-   svn export http://www.sdss3.org/svn/repo/xdqso/trunk xdqso
+   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_2 xdqso_0_2
 
 or
 
