@@ -238,7 +238,7 @@ Please cite the relevant papers among the following:
 
 
 
-       *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., 2011, in preparation
+       *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2011, in preparation
 
 
 ..
