@@ -25,7 +25,7 @@ OPENR, lun, filename, /GET_LUN
 hdr= ""
 READF, lun, hdr
 cmd= "wc -l "+filename
-spawn, cmd, nlines
+spawn, cmd, nlines, /sh
 nlines= nlines[0]-1
 i= dblarr(nlines)
 dndi= dblarr(nlines)

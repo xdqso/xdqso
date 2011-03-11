@@ -7,8 +7,8 @@
 ;      xdqsoz_zpdf, flux, flux_ivar, /galex, /ukidss, zmean=zmean,
 ;      zcovar=zcovar, zamp=zamp
 ;   INPUT:
-;      flux - [nfluxes-1] or [nfluxes-1,ndata] array of fluxes
-;      flux_ivar - [nfluxes-1] or [nfluxes-1,ndata] array of flux_ivars
+;      flux - [nfluxes] or [nfluxes,ndata] array of fluxes
+;      flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars
 ;   KEYWORDS:
 ;      galex - use GALEX fits
 ;      ukidss - use UKIDSS
