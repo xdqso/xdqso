@@ -36,10 +36,23 @@ END
 FUNCTION SPECIAL_INVERT, matrix
 RETURN, invert(matrix,/double)
 END
-FUNCTION BOVY_DETERM, matrix, double=double, check=check
-IF n_elements(matrix) EQ 1 THEN return, matrix ELSE $
-  return, determ(matrix,double=double,check=check)
-END
+function bovy_determ, matrix, double=double, check=check
+
+	if n_elements(matrix) eq 1 then begin
+		return, matrix 
+	endif
+
+	; ESS
+	; Got a mysterious crash in one case: Something
+	; about a singular matrix.  try to catch
+	; the error by wrapping it in a execute() call
+	command = 'det = determ(matrix,double=double,check=check)'
+	if not execute(command) then begin
+		splog,'Failed to get determinant, returning zero'
+		det = 0d
+	endif
+	return, det
+end
 PRO XDQSO_CALC_MEMBERSHIP_PROB, logpost, ydata, ycovar, xmean, xcovar, xamp, $
                                 projection=projection, loglike=loglike
 
