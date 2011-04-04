@@ -77,9 +77,11 @@ Contents:
 
 	:ref:`xdqsoz_calculate_prob <idl_xdqsoz_calculate_prob>`
 
-	:ref:`xdqsoz_marginalize_colorzprob <idl_xdqsoz_maringalize_colorzprob>`
-
 	:ref:`xdqsoz_eval_zpdf <idl_xdqsoz_eval_zpdf>`
+
+	:ref:`xdqsoz_marginalize_colorzprob <idl_xdqsoz_marginalize_colorzprob>`
+
+	:ref:`xdqsoz_qso_track <idl_xdqsoz_qso_track>`
 
 	:ref:`xdqsoz_zpdf <idl_xdqsoz_zpdf>`
 
@@ -136,7 +138,28 @@ Contents:
 		2010-04-30 - Written - Bovy (NYU)
 
 
-.. _idl_xdqsoz_maringalize_colorzprob:
+.. _idl_xdqsoz_eval_zpdf:
+
+**xdqsoz_eval_zpdf** (z,zmean,zcovar,zamp)
+
+	*evaluate the photometric redshift PDF for a given redshift given means, covars, and amps*
+
+	Input:
+
+		z - redshift [nz]
+		
+		zmean, zcovar, zamp - from :ref:`xdqsoz_zpdf <idl_xdqsoz_zpdf>`
+
+	Output:
+	
+		p(z)
+
+	History:
+
+		2011-01-18 - Written - Bovy (NYU)
+
+
+.. _idl_xdqsoz_marginalize_colorzprob:
 
 **xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)
 
@@ -168,28 +191,35 @@ Contents:
 
 	History:
 
-		20111-01-16 - Written - Bovy (NYU)
+		2011-01-16 - Written - Bovy (NYU)
 
+.. _idl_xdqsoz_qso_track:
 
-.. _idl_xdqsoz_eval_zpdf:
+**xdqsoz_qso_track** (z,i=i,/galex,/ukidss)
 
-**xdqsoz_eval_zpdf** (z,zmean,zcovar,zamp)
-
-	*evaluate the photometric redshift PDF for a given redshift given means, covars, and amps*
+        *calculate the mean quasar locus*
 
 	Input:
 
-		z - redshift [nz]
-		
-		zmean, zcovar, zamp - from :ref:`xdqsoz_zpdf <idl_xdqsoz_zpdf>`
+		z - redshift or array of redshifts [N]
+
+	Optional Input:
+
+	      i= dereddened i-band magnitude
+
+	Keywords: 
+
+		galex - use GALEX fits
+
+		ukidss - use UKIDSS
 
 	Output:
-	
-		p(z)
+
+		mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])
 
 	History:
 
-		2011-01-18 - Written - Bovy (NYU)
+		2011-04-01 - Written - Bovy (NYU)
 
 
 .. _idl_xdqsoz_zpdf:
