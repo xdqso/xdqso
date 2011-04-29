@@ -31,7 +31,7 @@ To download the code use either
 
 .. code-block:: none
 
-   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_2 xdqso_0_2
+   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_3 xdqso_0_3
 
 or
 
@@ -264,7 +264,7 @@ Please cite the relevant papers among the following:
        *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
 
 
-       *Photometric redshifts and quasar probabilities over arbitrary redshift ranges*, Bovy, J., et al., 2011, in preparation
+       *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, submitted to ApJ
 
 
 

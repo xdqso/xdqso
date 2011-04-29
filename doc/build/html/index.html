@@ -56,7 +56,7 @@ selection or to calculate photometric redshifts for quasars.</p>
 <div class="section" id="introduction">
 <span id="intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>To download the code use either</p>
-<div class="highlight-none"><div class="highlight"><pre>svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_2 xdqso_0_2
+<div class="highlight-none"><div class="highlight"><pre>svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_3 xdqso_0_3
 </pre></div>
 </div>
 <p>or</p>
@@ -89,8 +89,9 @@ then allows you to evaluate this PDF.</p>
 <blockquote>
 <p><a class="reference internal" href="#idl-xdqso-calculate-prob"><em>xdqso_calculate_prob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-calculate-prob"><em>xdqsoz_calculate_prob</em></a></p>
-<p><a class="reference internal" href="#idl-xdqsoz-maringalize-colorzprob"><em>xdqsoz_marginalize_colorzprob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-eval-zpdf"><em>xdqsoz_eval_zpdf</em></a></p>
+<p><a class="reference internal" href="#idl-xdqsoz-marginalize-colorzprob"><em>xdqsoz_marginalize_colorzprob</em></a></p>
+<p><a class="reference internal" href="#idl-xdqsoz-qso-track"><em>xdqsoz_qso_track</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-zpdf"><em>xdqsoz_zpdf</em></a></p>
 </blockquote>
 <p id="idl-xdqso-calculate-prob"><strong>xdqso_calculate_prob</strong> (in,/dereddened)</p>
@@ -130,31 +131,6 @@ out - structure containing pqso, ...</blockquote>
 <blockquote>
 2010-04-30 - Written - Bovy (NYU)</blockquote>
 </blockquote>
-<p id="idl-xdqsoz-maringalize-colorzprob"><strong>xdqsoz_marginalize_colorzprob</strong> (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)</p>
-<blockquote>
-<p><em>marginalize the probability of a relative flux + redshift (not a color) over redshift</em></p>
-<p>Input:</p>
-<blockquote>
-<p>zmin, zmax - redshift</p>
-<p>flux - [nfluxes] or [nfluxes,ndata] array of fluxes</p>
-<p>flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars</p>
-</blockquote>
-<p>Optional Input:</p>
-<blockquote>
-norm - normalization factor (if precomputed by calling this function before with zmin=0.3 and zmax=5.5)</blockquote>
-<p>Keywords:</p>
-<blockquote>
-<p>galex - use GALEX fits</p>
-<p>ukidss - use UKIDSS</p>
-<p>log - calculate log</p>
-</blockquote>
-<p>Output:</p>
-<blockquote>
-number or array of probabilities</blockquote>
-<p>History:</p>
-<blockquote>
-20111-01-16 - Written - Bovy (NYU)</blockquote>
-</blockquote>
 <p id="idl-xdqsoz-eval-zpdf"><strong>xdqsoz_eval_zpdf</strong> (z,zmean,zcovar,zamp)</p>
 <blockquote>
 <p><em>evaluate the photometric redshift PDF for a given redshift given means, covars, and amps</em></p>
@@ -169,6 +145,52 @@ p(z)</blockquote>
 <p>History:</p>
 <blockquote>
 2011-01-18 - Written - Bovy (NYU)</blockquote>
+</blockquote>
+<p id="idl-xdqsoz-marginalize-colorzprob"><strong>xdqsoz_marginalize_colorzprob</strong> (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)</p>
+<blockquote>
+<p><em>marginalize the probability of a relative flux + redshift (not a color) over redshift</em></p>
+<p>Input:</p>
+<blockquote>
+<p>zmin, zmax - redshift</p>
+<p>flux - [nfluxes] or [nfluxes,ndata] array of fluxes</p>
+<p>flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars</p>
+</blockquote>
+<p>Keywords:</p>
+<blockquote>
+<p>galex - use GALEX fits</p>
+<p>ukidss - use UKIDSS</p>
+<p>log - calculate log</p>
+</blockquote>
+<p>Output:</p>
+<blockquote>
+number or array of probabilities</blockquote>
+<p>Optional Output:</p>
+<blockquote>
+norm - normalization factor (likelihood marginalized over redshift 0 to infinity)</blockquote>
+<p>History:</p>
+<blockquote>
+2011-01-16 - Written - Bovy (NYU)</blockquote>
+</blockquote>
+<p id="idl-xdqsoz-qso-track"><strong>xdqsoz_qso_track</strong> (z,i=i,/galex,/ukidss)</p>
+<blockquote>
+<p><em>calculate the mean quasar locus</em></p>
+<p>Input:</p>
+<blockquote>
+z - redshift or array of redshifts [N]</blockquote>
+<p>Optional Input:</p>
+<blockquote>
+i= dereddened i-band magnitude</blockquote>
+<p>Keywords:</p>
+<blockquote>
+<p>galex - use GALEX fits</p>
+<p>ukidss - use UKIDSS</p>
+</blockquote>
+<p>Output:</p>
+<blockquote>
+mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])</blockquote>
+<p>History:</p>
+<blockquote>
+2011-04-01 - Written - Bovy (NYU)</blockquote>
 </blockquote>
 <p id="idl-xdqsoz-zpdf"><strong>xdqsoz_zpdf</strong>, flux, flux_ivar, /galex, /ukidss, zmean=zmean, zcovar=zcovar, zamp=zamp</p>
 <blockquote>
@@ -199,7 +221,7 @@ p(z)</blockquote>
 <p>Please cite the relevant papers among the following:</p>
 <blockquote>
 <p><em>Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog</em>, Bovy, J., et al., 2010, ApJ, <strong>729</strong>, 141 <a class="reference external" href="http://dx.doi.org/10.1088/0004-637X/729/2/141">[ApJ]</a> <a class="reference external" href="http://adsabs.harvard.edu/abs/2011ApJ....729..141B">[ADS]</a></p>
-<p><em>Photometric redshifts and quasar probabilities over arbitrary redshift ranges</em>, Bovy, J., et al., 2011, in preparation</p>
+<p><em>Photometric redshifts and quasar probabilities from a single, data-driven generative model</em>, Bovy, J., et al., 2011, submitted to ApJ</p>
 <p><em>The SDSS-XDQSO photometric quasar catalog</em>, Myers, A. D., et al., 2011, in preparation</p>
 </blockquote>
 </div>

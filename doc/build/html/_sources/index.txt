@@ -31,7 +31,7 @@ To download the code use either
 
 .. code-block:: none
 
-   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_2 xdqso_0_2
+   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_3 xdqso_0_3
 
 or
 
@@ -77,9 +77,11 @@ Contents:
 
 	:ref:`xdqsoz_calculate_prob <idl_xdqsoz_calculate_prob>`
 
-	:ref:`xdqsoz_marginalize_colorzprob <idl_xdqsoz_maringalize_colorzprob>`
-
 	:ref:`xdqsoz_eval_zpdf <idl_xdqsoz_eval_zpdf>`
+
+	:ref:`xdqsoz_marginalize_colorzprob <idl_xdqsoz_marginalize_colorzprob>`
+
+	:ref:`xdqsoz_qso_track <idl_xdqsoz_qso_track>`
 
 	:ref:`xdqsoz_zpdf <idl_xdqsoz_zpdf>`
 
@@ -136,41 +138,6 @@ Contents:
 		2010-04-30 - Written - Bovy (NYU)
 
 
-.. _idl_xdqsoz_maringalize_colorzprob:
-
-**xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)
-
-	*marginalize the probability of a relative flux + redshift (not a color) over redshift*
-
-	Input:
-
-		zmin, zmax - redshift
-
-		flux - [nfluxes] or [nfluxes,ndata] array of fluxes
-
-		flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars
-	
-	Optional Input:
-	
-		norm - normalization factor (if precomputed by calling this function before with zmin=0.3 and zmax=5.5)
-
-	Keywords:
-
-		galex - use GALEX fits
-
-		ukidss - use UKIDSS
-
-		log - calculate log
-
-	Output:
-
-		number or array of probabilities
-
-	History:
-
-		20111-01-16 - Written - Bovy (NYU)
-
-
 .. _idl_xdqsoz_eval_zpdf:
 
 **xdqsoz_eval_zpdf** (z,zmean,zcovar,zamp)
@@ -190,6 +157,69 @@ Contents:
 	History:
 
 		2011-01-18 - Written - Bovy (NYU)
+
+
+.. _idl_xdqsoz_marginalize_colorzprob:
+
+**xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)
+
+	*marginalize the probability of a relative flux + redshift (not a color) over redshift*
+
+	Input:
+
+		zmin, zmax - redshift
+
+		flux - [nfluxes] or [nfluxes,ndata] array of fluxes
+
+		flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars
+	
+	Keywords:
+
+		galex - use GALEX fits
+
+		ukidss - use UKIDSS
+
+		log - calculate log
+
+	Output:
+
+		number or array of probabilities
+
+	Optional Output:
+	
+		norm - normalization factor (likelihood marginalized over redshift 0 to infinity)
+
+	History:
+
+		2011-01-16 - Written - Bovy (NYU)
+
+.. _idl_xdqsoz_qso_track:
+
+**xdqsoz_qso_track** (z,i=i,/galex,/ukidss)
+
+        *calculate the mean quasar locus*
+
+	Input:
+
+		z - redshift or array of redshifts [N]
+
+	Optional Input:
+
+	      i= dereddened i-band magnitude
+
+	Keywords: 
+
+		galex - use GALEX fits
+
+		ukidss - use UKIDSS
+
+	Output:
+
+		mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])
+
+	History:
+
+		2011-04-01 - Written - Bovy (NYU)
 
 
 .. _idl_xdqsoz_zpdf:
@@ -234,7 +264,7 @@ Please cite the relevant papers among the following:
        *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
 
 
-       *Photometric redshifts and quasar probabilities over arbitrary redshift ranges*, Bovy, J., et al., 2011, in preparation
+       *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, submitted to ApJ
 
 
 
