@@ -1,0 +1,11 @@
+Prior to tagging, do the following:
+
+- change the version of the code in the 'svn export' section of doc/source/index.rst
+
+- change the version in doc/source/conf.py
+
+- 'make html' the documentation
+
+- svn ci all of that
+
+- tag using, e.g., svn copy svn+ssh://sdss3svn@sdss3.org/repo/xdqso/trunk svn+ssh://sdss3svn@sdss3.org/repo/xdqso/tags/v0_7 -m "xdqso: tagging v0_7"
