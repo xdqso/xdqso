@@ -21,7 +21,10 @@ FUNCTION XDQSO_EVAL_COLORPROB, flux, flux_ivar, qso=qso, lowz=lowz, $
                                midz=midz, galex=galex, ukidss=ukidss
 ;;check for environment variable
 path= getenv('XDQSODATA')
-if strcmp(path,'') then _SAVEDIR= '../data/' else _SAVEDIR = '$XDQSODATA/'
+if strcmp(path,'') then _SAVEDIR= path_sep(/parent)+path_sep()+'data' $
+else _SAVEDIR = '$XDQSODATA'
+result= strpos(_SAVEDIR,path_sep(),/reverse_search)
+if result ne (strlen(_SAVEDIR)-1) then _SAVEDIR= _SAVEDIR+path_sep()
 IF keyword_set(qso) AND keyword_set(lowz) THEN BEGIN
     savefilename= _SAVEDIR+'xdqso_relflux_fits_qsolowz'
 ENDIF ELSE IF keyword_set(qso) AND keyword_set(midz) THEN BEGIN

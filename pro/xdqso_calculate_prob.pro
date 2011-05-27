@@ -30,7 +30,10 @@ ENDELSE
 
 ;;Read the differential number counts
 path= getenv('XDQSODATA')
-if strcmp(path,'') then dataDir= '../data/' else dataDir = '$XDQSODATA/'
+if strcmp(path,'') then dataDir= path_sep(/parent)+path_sep()+'data' $
+else dataDir = '$XDQSODATA'
+result= strpos(dataDir,path_sep(),/reverse_search)
+if result ne (strlen(dataDir)-1) then dataDir= dataDir+path_sep()
 lumfunc= 'HRH07'
 dndi_qsobosszfile= xdqso_dndipath(2.2,3.5,lumfunc)
 dndi_qsofile= xdqso_dndipath(3.5,6.,lumfunc)
