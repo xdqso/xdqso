@@ -41,8 +41,8 @@ or
 
 
 Installation only requires you to set the environment variable
-``XDQSODATA`` to the ``data`` directory of the distribution (without
-the trailing slash). EvilUPS setup is available.
+``XDQSODATA`` to the ``data`` directory of the distribution. EvilUPS
+setup is available.
 
 
 Code is available either as ``xdqso`` or as ``xdqsoz``. For most
@@ -261,14 +261,17 @@ Acknowledging XDQSO
 
 Please cite the relevant papers among the following:
 
-       *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
+       BOSS CORE target selection paper (also cite `Ross et al. 2011 <http://adsabs.harvard.edu/abs/2011arXiv1105.0606R>`_): *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
 
 
-       *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, submitted to ApJ
+       Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, submitted to ApJ `[arXiv/1105.3975] <http://arxiv.org/abs/1105.3975>`_
 
 
 
-       *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2011, in preparation
+       Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2011, in preparation
+
+
+       XD methodology paper: *Extreme deconvolution: inferring complete distribution functions from noisy, heterogeneous and incomplete observations*, Bovy, J., Hogg, D. W., & Roweis, S. T., 2011, AOAS, in press `[arXiv/0905.2979] <http://arxiv.org/abs/0905.2979>`_
 
 
 ..
