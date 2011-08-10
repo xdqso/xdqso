@@ -31,7 +31,7 @@ PRO XDQSO_PREP_DATA, flux, flux_ivar, extinction=extinction, $
                      mags=mags, var_mags=var_mags, $
                      colors=colors, nbyncovar=nbyncovar, fluxes=fluxes, $
                      relfluxes=relfluxes
-
+_BIGVAR= 1D5
 ; softening parameters from EDR paper in units of 1.0e-10
 ; (Stoughton et al. 2002)
 b_u = 1.4
@@ -90,6 +90,9 @@ IF keyword_set(relfluxes) THEN BEGIN
         var_mags[jj,kk-1,*]= flux[jj,*]*flux[kk,*]/flux[3,*]^4D0/flux_ivar[3,*]
         var_mags[kk-1,jj,*]= flux[jj,*]*flux[kk,*]/flux[3,*]^4D0/flux_ivar[3,*]
     ENDFOR
+    ;;fix infinities
+    indx= where(finite(var_mags,/infinity),cnt)
+    if cnt gt 0 then var_mags[indx]= _BIGVAR
     RETURN
 ENDIF
 
