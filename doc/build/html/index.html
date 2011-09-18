@@ -49,10 +49,11 @@ BOSS</a> quasar target
 selection or to calculate photometric redshifts for quasars.</p>
 <p>Contents:</p>
 <blockquote>
-<p><a class="reference internal" href="#intro"><em>Introduction</em></a></p>
+<div><p><a class="reference internal" href="#intro"><em>Introduction</em></a></p>
+<p><a class="reference internal" href="#cat"><em>XDQSOZ photometric quasar catalog</em></a></p>
 <p><a class="reference internal" href="#idl"><em>IDL code</em></a></p>
 <p><a class="reference internal" href="#ack"><em>Acknowledging XDQSO</em></a></p>
-</blockquote>
+</div></blockquote>
 <div class="section" id="introduction">
 <span id="intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>To download the code use either</p>
@@ -82,149 +83,186 @@ redshift ranges.</p>
 <tt class="docutils literal"><span class="pre">xdqsoz_eval_zpdf</span></tt> functions. The former prepares the parameters of
 the one-dimensional redshift PDF for individual objects, the latter
 then allows you to evaluate this PDF.</p>
+<p>One can also use xdqsoz_marginalize_colorzprob to integrate the redshift
+PDF over arbitrary redshift ranges:</p>
+<p>out= xdqsoz_marginalize_colorzprob(zmin,zmax,flux,flux_ivar,norm=totlike)</p>
+<p>Input is dereddened psfflux and psfflux_ivar (to deredden you can use
+the functions xdqso_sdss_deredden and xdqso_sdss_deredden_error) and a
+min and max redshift; output is the marginalized likelihood
+(marginalized over redshift). Setting norm=totlike returns the total
+quasar likelihood. If you then multiply the &#8216;pqso&#8217; from the
+photometric quasar catalog below by the ratio of out and totlike you
+get the desired redshift-range probability (since the prior and the
+denominator do not change). When calculating quasar probabilities in
+many bins this is much faster than calling <tt class="docutils literal"><span class="pre">xdqsoz_calculate_prob</span></tt>
+repeatedly because you do not recalculate star likelihoods and priors
+each time.</p>
+</div>
+<div class="section" id="xdqsoz-photometric-quasar-catalog">
+<span id="cat"></span><h2>XDQSOz photometric quasar catalog<a class="headerlink" href="#xdqsoz-photometric-quasar-catalog" title="Permalink to this headline">¶</a></h2>
+<p>A preliminary version of the SDSS-XDQSO DR8 photometric quasar
+catalog is available at</p>
+<p><a class="reference external" href="http://cosmo.nyu.edu/~jb2777/qsocat/xdqsoz_pqso0.5_imag21.5-nobadu.fits.gz">http://cosmo.nyu.edu/~jb2777/qsocat/xdqsoz_pqso0.5_imag21.5-nobadu.fits.gz</a></p>
+<p><a class="reference external" href="http://cosmo.nyu.edu/~jb2777/qsocat/README_pqso0.5_imag21.5-nobadu">http://cosmo.nyu.edu/~jb2777/qsocat/README_pqso0.5_imag21.5-nobadu</a></p>
+<p>This catalog is based on the same principle as the XDQSO method for
+BOSS quasar selection, but uses a slightly different algorithm
+(<em>XDQSOz</em>) for calculating quasar probabilities that also permits us
+to obtain photometric redshifts; it also allows quasar probabilities
+to be calculated quickly for arbitrary redshift ranges (see the
+accompanying code below).</p>
+<p>The preliminary catalog is a simple cut on P(quasar) &gt; 0.5 for all
+objects that pass the BOSS quasar selection flag cuts, limited further
+to i_0 &lt; 21.5 mag and with some bad u-columns in the SDSS imaging data
+masked. We have performed some first tests of the clustering of the
+objects in the catalog, which shows that the level of stellar
+contamination is small (&lt; 10%), but we have yet to break this up by
+redshift range, etc., and perform further tests. So exercise caution
+when using the catalog (especially at low Galactic latitude, since the
+SEGUE stripes are included), and please let us know if you find any
+problems.</p>
 </div>
 <div class="section" id="idl">
 <span id="idl-code"></span><h2>IDL code<a class="headerlink" href="#idl" title="Permalink to this headline">¶</a></h2>
 <p>Contents:</p>
 <blockquote>
-<p><a class="reference internal" href="#idl-xdqso-calculate-prob"><em>xdqso_calculate_prob</em></a></p>
+<div><p><a class="reference internal" href="#idl-xdqso-calculate-prob"><em>xdqso_calculate_prob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-calculate-prob"><em>xdqsoz_calculate_prob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-eval-zpdf"><em>xdqsoz_eval_zpdf</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-marginalize-colorzprob"><em>xdqsoz_marginalize_colorzprob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-qso-track"><em>xdqsoz_qso_track</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-zpdf"><em>xdqsoz_zpdf</em></a></p>
-</blockquote>
+</div></blockquote>
 <p id="idl-xdqso-calculate-prob"><strong>xdqso_calculate_prob</strong> (in,/dereddened)</p>
 <blockquote>
-<p><em>calculate the extreme-deconvolution XDQSO QSO probability</em></p>
+<div><p><em>calculate the extreme-deconvolution XDQSO QSO probability</em></p>
 <p>Input:</p>
 <blockquote>
-in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION</blockquote>
+<div>in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION</div></blockquote>
 <p>Keywords:</p>
 <blockquote>
-dereddened - psfflux, and psfflux_ivar is already dereddened</blockquote>
+<div>dereddened - psfflux, and psfflux_ivar is already dereddened</div></blockquote>
 <p>Output:</p>
 <blockquote>
-structure containing pqso, ... (see XDQSO catalog description)</blockquote>
+<div>structure containing pqso, ... (see XDQSO catalog description)</div></blockquote>
 <p>History:</p>
 <blockquote>
-010-04-30 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>010-04-30 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 <p id="idl-xdqsoz-calculate-prob"><strong>xdqsoz_calculate_prob</strong> (in,zmin,zmax,/dereddened,/galex,/ukidss)</p>
 <blockquote>
-<p><em>calculate the extreme-deconvolution probability ratio, marginalizing over an arbitrary redshift range</em></p>
+<div><p><em>calculate the extreme-deconvolution probability ratio, marginalizing over an arbitrary redshift range</em></p>
 <p>Input:</p>
 <blockquote>
-<p>in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION</p>
+<div><p>in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION</p>
 <p>zmin, zmax - lower, upper bound of redshift interval</p>
-</blockquote>
+</div></blockquote>
 <p>Keywords:</p>
 <blockquote>
-<p>dereddened  - psfflux, and psfflux_ivar are already dereddened</p>
+<div><p>dereddened  - psfflux, and psfflux_ivar are already dereddened</p>
 <p>galex - GALEX fluxes are included in psfflux, psfflux_ivar, and extinction; use them</p>
 <p>ukidss - use UKIDSS (like /galex)</p>
-</blockquote>
+</div></blockquote>
 <p>Output:</p>
 <blockquote>
-out - structure containing pqso, ...</blockquote>
+<div>out - structure containing pqso, ...</div></blockquote>
 <p>History:</p>
 <blockquote>
-2010-04-30 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>2010-04-30 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 <p id="idl-xdqsoz-eval-zpdf"><strong>xdqsoz_eval_zpdf</strong> (z,zmean,zcovar,zamp)</p>
 <blockquote>
-<p><em>evaluate the photometric redshift PDF for a given redshift given means, covars, and amps</em></p>
+<div><p><em>evaluate the photometric redshift PDF for a given redshift given means, covars, and amps</em></p>
 <p>Input:</p>
 <blockquote>
-<p>z - redshift [nz]</p>
+<div><p>z - redshift [nz]</p>
 <p>zmean, zcovar, zamp - from <a class="reference internal" href="#idl-xdqsoz-zpdf"><em>xdqsoz_zpdf</em></a></p>
-</blockquote>
+</div></blockquote>
 <p>Output:</p>
 <blockquote>
-p(z)</blockquote>
+<div>p(z)</div></blockquote>
 <p>History:</p>
 <blockquote>
-2011-01-18 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>2011-01-18 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 <p id="idl-xdqsoz-marginalize-colorzprob"><strong>xdqsoz_marginalize_colorzprob</strong> (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)</p>
 <blockquote>
-<p><em>marginalize the probability of a relative flux + redshift (not a color) over redshift</em></p>
+<div><p><em>marginalize the probability of a relative flux + redshift (not a color) over redshift</em></p>
 <p>Input:</p>
 <blockquote>
-<p>zmin, zmax - redshift</p>
+<div><p>zmin, zmax - redshift</p>
 <p>flux - [nfluxes] or [nfluxes,ndata] array of fluxes</p>
 <p>flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars</p>
-</blockquote>
+</div></blockquote>
 <p>Keywords:</p>
 <blockquote>
-<p>galex - use GALEX fits</p>
+<div><p>galex - use GALEX fits</p>
 <p>ukidss - use UKIDSS</p>
 <p>log - calculate log</p>
-</blockquote>
+</div></blockquote>
 <p>Output:</p>
 <blockquote>
-number or array of probabilities</blockquote>
+<div>number or array of probabilities</div></blockquote>
 <p>Optional Output:</p>
 <blockquote>
-norm - normalization factor (likelihood marginalized over redshift 0 to infinity)</blockquote>
+<div>norm - normalization factor (likelihood marginalized over redshift 0 to infinity)</div></blockquote>
 <p>History:</p>
 <blockquote>
-2011-01-16 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>2011-01-16 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 <p id="idl-xdqsoz-qso-track"><strong>xdqsoz_qso_track</strong> (z,i=i,/galex,/ukidss)</p>
 <blockquote>
-<p><em>calculate the mean quasar locus</em></p>
+<div><p><em>calculate the mean quasar locus</em></p>
 <p>Input:</p>
 <blockquote>
-z - redshift or array of redshifts [N]</blockquote>
+<div>z - redshift or array of redshifts [N]</div></blockquote>
 <p>Optional Input:</p>
 <blockquote>
-i= dereddened i-band magnitude</blockquote>
+<div>i= dereddened i-band magnitude</div></blockquote>
 <p>Keywords:</p>
 <blockquote>
-<p>galex - use GALEX fits</p>
+<div><p>galex - use GALEX fits</p>
 <p>ukidss - use UKIDSS</p>
-</blockquote>
+</div></blockquote>
 <p>Output:</p>
 <blockquote>
-mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])</blockquote>
+<div>mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])</div></blockquote>
 <p>History:</p>
 <blockquote>
-2011-04-01 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>2011-04-01 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 <p id="idl-xdqsoz-zpdf"><strong>xdqsoz_zpdf</strong>, flux, flux_ivar, /galex, /ukidss, zmean=zmean, zcovar=zcovar, zamp=zamp</p>
 <blockquote>
-<p><em>calculate the photometric redshift pdf using XDQSOz</em></p>
+<div><p><em>calculate the photometric redshift pdf using XDQSOz</em></p>
 <p>Input:</p>
 <blockquote>
-<p>flux - [nfluxes] or [nfluxes,ndata] array of fluxes</p>
+<div><p>flux - [nfluxes] or [nfluxes,ndata] array of fluxes</p>
 <p>flux_ivar - [nfluxes] or [nfluxes,ndata] array of flux_ivars</p>
-</blockquote>
+</div></blockquote>
 <p>Keywords:</p>
 <blockquote>
-<p>galex - use GALEX fits</p>
+<div><p>galex - use GALEX fits</p>
 <p>ukidss - use UKIDSS</p>
-</blockquote>
+</div></blockquote>
 <p>Output:</p>
 <blockquote>
-<p>zmean - [ngauss,ndata] array of means</p>
+<div><p>zmean - [ngauss,ndata] array of means</p>
 <p>zcovar - [ngauss,ndata] array of covars</p>
 <p>zamp - [ngauss,ndata] array of amplitudes</p>
-</blockquote>
+</div></blockquote>
 <p>History:</p>
 <blockquote>
-2011-01-18 - Written - Bovy (NYU)</blockquote>
-</blockquote>
+<div>2011-01-18 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="acknowledging-xdqso">
 <span id="ack"></span><h2>Acknowledging XDQSO<a class="headerlink" href="#acknowledging-xdqso" title="Permalink to this headline">¶</a></h2>
 <p>Please cite the relevant papers among the following:</p>
 <blockquote>
-<p>BOSS CORE target selection paper (also cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2011arXiv1105.0606R">Ross et al. 2011</a>): <em>Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog</em>, Bovy, J., et al., 2010, ApJ, <strong>729</strong>, 141 <a class="reference external" href="http://dx.doi.org/10.1088/0004-637X/729/2/141">[ApJ]</a> <a class="reference external" href="http://adsabs.harvard.edu/abs/2011ApJ....729..141B">[ADS]</a></p>
+<div><p>BOSS CORE target selection paper (also cite <a class="reference external" href="http://adsabs.harvard.edu/abs/2011arXiv1105.0606R">Ross et al. 2011</a>): <em>Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog</em>, Bovy, J., et al., 2010, ApJ, <strong>729</strong>, 141 <a class="reference external" href="http://dx.doi.org/10.1088/0004-637X/729/2/141">[ApJ]</a> <a class="reference external" href="http://adsabs.harvard.edu/abs/2011ApJ....729..141B">[ADS]</a></p>
 <p>Photometric redshifts: <em>Photometric redshifts and quasar probabilities from a single, data-driven generative model</em>, Bovy, J., et al., 2011, submitted to ApJ <a class="reference external" href="http://arxiv.org/abs/1105.3975">[arXiv/1105.3975]</a></p>
 <p>Catalog paper: <em>The SDSS-XDQSO photometric quasar catalog</em>, Myers, A. D., et al., 2011, in preparation</p>
 <p>XD methodology paper: <em>Extreme deconvolution: inferring complete distribution functions from noisy, heterogeneous and incomplete observations</em>, Bovy, J., Hogg, D. W., &amp; Roweis, S. T., 2011, AOAS, in press <a class="reference external" href="http://arxiv.org/abs/0905.2979">[arXiv/0905.2979]</a></p>
-</blockquote>
+</div></blockquote>
 </div>
 </div>
 
@@ -238,6 +276,7 @@ mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])</blockquote>
   <ul>
 <li><a class="reference internal" href="#">Welcome to XDQSO&#8217;s documentation!</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#xdqsoz-photometric-quasar-catalog">XDQSOz photometric quasar catalog</a></li>
 <li><a class="reference internal" href="#idl">IDL code</a></li>
 <li><a class="reference internal" href="#acknowledging-xdqso">Acknowledging XDQSO</a></li>
 </ul>
@@ -277,7 +316,7 @@ mags[ndim,N] - array of apparent magnitudes (ugriz[NUV,FUV,YJHK])</blockquote>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Jo Bovy.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

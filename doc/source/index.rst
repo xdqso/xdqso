@@ -16,6 +16,8 @@ Contents:
 
 	:ref:`Introduction <intro>`
 
+	:ref:`XDQSOZ photometric quasar catalog <cat>`
+
 	:ref:`IDL code <idl>`
 
 	:ref:`Acknowledging XDQSO <ack>`
@@ -44,7 +46,6 @@ Installation only requires you to set the environment variable
 ``XDQSODATA`` to the ``data`` directory of the distribution. EvilUPS
 setup is available.
 
-
 Code is available either as ``xdqso`` or as ``xdqsoz``. For most
 purposes you will want to use the ``xdqsoz`` functions: these allow
 you to calculate photometric redshifts and quasar probabilities for
@@ -63,6 +64,54 @@ Photometric redshifts can be calculate using the ``xdqsoz_zpdf`` and
 ``xdqsoz_eval_zpdf`` functions. The former prepares the parameters of
 the one-dimensional redshift PDF for individual objects, the latter
 then allows you to evaluate this PDF.
+
+One can also use xdqsoz_marginalize_colorzprob to integrate the redshift
+PDF over arbitrary redshift ranges:
+
+out= xdqsoz_marginalize_colorzprob(zmin,zmax,flux,flux_ivar,norm=totlike)
+
+Input is dereddened psfflux and psfflux_ivar (to deredden you can use
+the functions xdqso_sdss_deredden and xdqso_sdss_deredden_error) and a
+min and max redshift; output is the marginalized likelihood
+(marginalized over redshift). Setting norm=totlike returns the total
+quasar likelihood. If you then multiply the 'pqso' from the
+photometric quasar catalog below by the ratio of out and totlike you
+get the desired redshift-range probability (since the prior and the
+denominator do not change). When calculating quasar probabilities in
+many bins this is much faster than calling ``xdqsoz_calculate_prob``
+repeatedly because you do not recalculate star likelihoods and priors
+each time.
+
+.. _cat:
+
+XDQSOz photometric quasar catalog
+---------------------------------
+
+A preliminary version of the SDSS-XDQSO DR8 photometric quasar
+catalog is available at
+
+http://cosmo.nyu.edu/~jb2777/qsocat/xdqsoz_pqso0.5_imag21.5-nobadu.fits.gz
+
+http://cosmo.nyu.edu/~jb2777/qsocat/README_pqso0.5_imag21.5-nobadu
+
+This catalog is based on the same principle as the XDQSO method for
+BOSS quasar selection, but uses a slightly different algorithm
+(*XDQSOz*) for calculating quasar probabilities that also permits us
+to obtain photometric redshifts; it also allows quasar probabilities
+to be calculated quickly for arbitrary redshift ranges (see the
+accompanying code below).
+
+The preliminary catalog is a simple cut on P(quasar) > 0.5 for all
+objects that pass the BOSS quasar selection flag cuts, limited further
+to i_0 < 21.5 mag and with some bad u-columns in the SDSS imaging data
+masked. We have performed some first tests of the clustering of the
+objects in the catalog, which shows that the level of stellar
+contamination is small (< 10%), but we have yet to break this up by
+redshift range, etc., and perform further tests. So exercise caution
+when using the catalog (especially at low Galactic latitude, since the
+SEGUE stripes are included), and please let us know if you find any
+problems.
+
 
 
 .. _idl:
