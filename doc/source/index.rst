@@ -130,6 +130,8 @@ Contents:
 
 	:ref:`xdqsoz_marginalize_colorzprob <idl_xdqsoz_marginalize_colorzprob>`
 
+	:ref:`xdqsoz_peaks <idl_xdqsoz_peaks>`
+
 	:ref:`xdqsoz_qso_track <idl_xdqsoz_qso_track>`
 
 	:ref:`xdqsoz_zpdf <idl_xdqsoz_zpdf>`
@@ -241,6 +243,46 @@ Contents:
 	History:
 
 		2011-01-16 - Written - Bovy (NYU)
+
+.. _idl_xdqsoz_peaks:
+
+**xdqsoz_peaks** (flux,flux_ivar,nzs=nzs,peak_threshold=peak_threshold,/galex,/ukidss,/plot,peakz=peakz,xdqsoz=xdqsoz)
+
+        *calculate the number of peaks of a zpdf as well as the MAP z*
+
+	Input:
+
+		flux - dereddened flux
+
+		flux_ivar - dereddened flux_ivar
+
+	Optional Input:
+
+		 nzs - number of points to sample the PDF at
+
+		 peak_threshold - threshold for defining a peak (contiguous region with p above peak_threshold)
+
+	Keywords:
+
+		galex - use GALEX fits
+
+		ukidss - use UKIDSS
+
+		plot - make QS plot
+
+	Output:
+	
+		number of peaks
+	
+	Optional Output:
+
+		 peakz - MAP z
+
+		 xdqsoz - structure containing {peakz,peakprob,peakfwhm,otherz,otherprob,otherfwhm} for all peaks
+
+	History:
+
+		2011-01-18 - Written - Bovy (NYU)
 
 .. _idl_xdqsoz_qso_track:
 

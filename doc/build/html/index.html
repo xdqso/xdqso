@@ -129,6 +129,7 @@ problems.</p>
 <p><a class="reference internal" href="#idl-xdqsoz-calculate-prob"><em>xdqsoz_calculate_prob</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-eval-zpdf"><em>xdqsoz_eval_zpdf</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-marginalize-colorzprob"><em>xdqsoz_marginalize_colorzprob</em></a></p>
+<p><a class="reference internal" href="#idl-xdqsoz-peaks"><em>xdqsoz_peaks</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-qso-track"><em>xdqsoz_qso_track</em></a></p>
 <p><a class="reference internal" href="#idl-xdqsoz-zpdf"><em>xdqsoz_zpdf</em></a></p>
 </div></blockquote>
@@ -208,6 +209,37 @@ problems.</p>
 <p>History:</p>
 <blockquote>
 <div>2011-01-16 - Written - Bovy (NYU)</div></blockquote>
+</div></blockquote>
+<p id="idl-xdqsoz-peaks"><strong>xdqsoz_peaks</strong> (flux,flux_ivar,nzs=nzs,peak_threshold=peak_threshold,/galex,/ukidss,/plot,peakz=peakz,xdqsoz=xdqsoz)</p>
+<blockquote>
+<div><p><em>calculate the number of peaks of a zpdf as well as the MAP z</em></p>
+<p>Input:</p>
+<blockquote>
+<div><p>flux - dereddened flux</p>
+<p>flux_ivar - dereddened flux_ivar</p>
+</div></blockquote>
+<p>Optional Input:</p>
+<blockquote>
+<div><p>nzs - number of points to sample the PDF at</p>
+<p>peak_threshold - threshold for defining a peak (contiguous region with p above peak_threshold)</p>
+</div></blockquote>
+<p>Keywords:</p>
+<blockquote>
+<div><p>galex - use GALEX fits</p>
+<p>ukidss - use UKIDSS</p>
+<p>plot - make QS plot</p>
+</div></blockquote>
+<p>Output:</p>
+<blockquote>
+<div>number of peaks</div></blockquote>
+<p>Optional Output:</p>
+<blockquote>
+<div><p>peakz - MAP z</p>
+<p>xdqsoz - structure containing {peakz,peakprob,peakfwhm,otherz,otherprob,otherfwhm} for all peaks</p>
+</div></blockquote>
+<p>History:</p>
+<blockquote>
+<div>2011-01-18 - Written - Bovy (NYU)</div></blockquote>
 </div></blockquote>
 <p id="idl-xdqsoz-qso-track"><strong>xdqsoz_qso_track</strong> (z,i=i,/galex,/ukidss)</p>
 <blockquote>
