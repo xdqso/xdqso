@@ -355,7 +355,7 @@ Please cite the relevant papers among the following:
        BOSS CORE target selection paper (also cite `Ross et al. 2011 <http://adsabs.harvard.edu/abs/2011arXiv1105.0606R>`_): *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
 
 
-       Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, ApJ, **749**, 41 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/753/2/148>`_ `[ADS] <http://adsabs.harvard.edu/abs/2012ApJ...753..148B>`_
+       Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, ApJ, **749**, 41 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/749/1/41>`_ `[ADS] <http://adsabs.harvard.edu/abs/2012ApJ...749...41B>`_
 
 
        Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2015, in preparation
