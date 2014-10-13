@@ -33,7 +33,7 @@ To download the code use either
 
 .. code-block:: none
 
-   wget https://github.com/xdqso/xdqso/archive/v0.6.tar.gz
+   wget -qO- https://github.com/xdqso/xdqso/archive/v0.6.tar.gz | tar xvz
 
 or
 
