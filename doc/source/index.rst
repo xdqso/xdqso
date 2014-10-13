@@ -33,13 +33,13 @@ To download the code use either
 
 .. code-block:: none
 
-   svn export http://www.sdss3.org/svn/repo/xdqso/tags/v0_6 xdqso_0_6
+   wget https://github.com/xdqso/xdqso/archive/v0.6.tar.gz
 
 or
 
 .. code-block:: none
 
-   svn co http://www.sdss3.org/svn/repo/xdqso/trunk xdqso-read-only
+   git clone https://github.com/xdqso/xdqso.git
 
 
 Installation only requires you to set the environment variable
