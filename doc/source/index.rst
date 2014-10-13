@@ -68,7 +68,9 @@ then allows you to evaluate this PDF.
 One can also use xdqsoz_marginalize_colorzprob to integrate the redshift
 PDF over arbitrary redshift ranges:
 
-out= xdqsoz_marginalize_colorzprob(zmin,zmax,flux,flux_ivar,norm=totlike)
+.. code-block:: none
+
+   out= xdqsoz_marginalize_colorzprob(zmin,zmax,flux,flux_ivar,norm=totlike)
 
 Input is dereddened psfflux and psfflux_ivar (to deredden you can use
 the functions xdqso_sdss_deredden and xdqso_sdss_deredden_error) and a
