@@ -355,14 +355,13 @@ Please cite the relevant papers among the following:
        BOSS CORE target selection paper (also cite `Ross et al. 2011 <http://adsabs.harvard.edu/abs/2011arXiv1105.0606R>`_): *Think outside the color box: probabilistic target selection and the SDSS-XDQSO quasar targeting catalog*, Bovy, J., et al., 2010, ApJ, **729**, 141 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/729/2/141>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011ApJ....729..141B>`_
 
 
-       Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, submitted to ApJ `[arXiv/1105.3975] <http://arxiv.org/abs/1105.3975>`_
+       Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, ApJ, **749**, 41 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/753/2/148>`_ `[ADS] <http://adsabs.harvard.edu/abs/2012ApJ...753..148B>`_
 
 
+       Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2015, in preparation
 
-       Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2011, in preparation
 
-
-       XD methodology paper: *Extreme deconvolution: inferring complete distribution functions from noisy, heterogeneous and incomplete observations*, Bovy, J., Hogg, D. W., & Roweis, S. T., 2011, AOAS, in press `[arXiv/0905.2979] <http://arxiv.org/abs/0905.2979>`_
+       XD methodology paper: *Extreme deconvolution: inferring complete distribution functions from noisy, heterogeneous and incomplete observations*, Bovy, J., Hogg, D. W., & Roweis, S. T., 2011, AOAS, **5**, 2B, 1657 `[AOAS] <http://dx.doi.org/10.1214/10-AOAS439>`_ `[ADS] <http://adsabs.harvard.edu/abs/2011AnApS...5.1657B>`_
 
 
 ..
