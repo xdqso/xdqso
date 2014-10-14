@@ -5,7 +5,7 @@
 ;      marginalize the probability of a relative flux + redshift
 ;      (*not* a color) over redshift
 ;   USE:
-;      arr= xdqsoz_marginalize_colorzprob(z_min, z_max, flux, flux_ivar,/galex,/ukidss,norm=norm,/log)
+;      arr= xdqsoz_marginalize_colorzprob(z_min, z_max, flux, flux_ivar,/galex,/ukidss,/wise,norm=norm,/log)
 ;   INPUT:
 ;      z_min, z_max - redshift
 ;      flux - [5] or [5,ndata] array of fluxes
@@ -15,6 +15,7 @@
 ;   KEYWORDS:
 ;      galex - use GALEX fits
 ;      ukidss - use UKIDSS
+;      wise - use WISE
 ;      log - calculate log
 ;   OUTPUT:
 ;      number or array of probabilities
@@ -24,19 +25,18 @@
 ;      2010-05-29 - Added GALEX - Bovy
 ;      2010-10-30 - Added UKIDSS - Bovy
 ;      2011-01-16 - Adapted for colorz - Bovy
+;      2014-03-31 - Added WISE - DiPompeo (Uwyo)
 ;-
 FUNCTION XDQSOZ_MARGINALIZE_COLORZPROB, z_min,z_max, flux, flux_ivar, $
-                                        galex=galex, ukidss=ukidss, $
+                                        galex=galex, ukidss=ukidss, wise=wise, $
                                         norm=norm, log=log
 ;;check for environment variable
 path= getenv('XDQSODATA')
-if strcmp(path,'') then _SAVEDIR= path_sep(/parent)+path_sep()+'data' $
-else _SAVEDIR = '$XDQSODATA'
-result= strpos(_SAVEDIR,path_sep(),/reverse_search)
-if result ne (strlen(_SAVEDIR)-1) then _SAVEDIR= _SAVEDIR+path_sep()
+if strcmp(path,'') then _SAVEDIR= '../data/' else _SAVEDIR = '$XDQSODATA/'
 savefilename= _SAVEDIR+'xdqsoz_relflux_fits'
 IF keyword_set(galex) THEN savefilename+= '_galex'
 IF keyword_set(ukidss) THEN savefilename+= '_ukidss'
+IF keyword_set(wise) THEN savefilename+= '_wise'
 savefilename+= '.fits'
 
 b= 1.8;;Magnitude softening
