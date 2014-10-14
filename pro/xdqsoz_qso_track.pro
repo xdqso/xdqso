@@ -11,19 +11,18 @@
 ;      mags[5,N]
 ;   HISTORY:
 ;      2011-04-01 - Written - Bovy (NYU)
+;      2014-04-02 - Added WISE - DiPompeo (UWyo)
 ;-
-FUNCTION XDQSOZ_QSO_TRACK, z, i=i, galex=galex, ukidss=ukidss
+FUNCTION XDQSOZ_QSO_TRACK, z, i=i, galex=galex, ukidss=ukidss, wise=wise
 IF ~keyword_set(i) THEN i=19.
 thisz= alog(z)
 ;;check for environment variable
 path= getenv('XDQSODATA')
-if strcmp(path,'') then _SAVEDIR= path_sep(/parent)+path_sep()+'data' $
-else _SAVEDIR = '$XDQSODATA'
-result= strpos(_SAVEDIR,path_sep(),/reverse_search)
-if result ne (strlen(_SAVEDIR)-1) then _SAVEDIR= _SAVEDIR+path_sep()
+if strcmp(path,'') then _SAVEDIR= '../data/' else _SAVEDIR = '$XDQSODATA/'
 savefilename= _SAVEDIR+'xdqsoz_relflux_fits'
 IF keyword_set(galex) THEN savefilename+= '_galex'
 IF keyword_set(ukidss) THEN savefilename+= '_ukidss'
+IF keyword_set(wise) THEN savefilename+= '_wise'
 savefilename+= '.fits'
 
 ; softening parameters from EDR paper in units of 1.0e-10
@@ -43,12 +42,20 @@ _NGAUSS= 60
 nbins= (_IMAX-_IMIN)/_ISTEP
 
 nz= n_elements(thisz)
-IF keyword_set(galex) AND keyword_set(ukidss) THEN BEGIN
+IF keyword_set(galex) AND keyword_set(ukidss) AND keyword_set(wise) THEN BEGIN
+   ndim= 13
+ENDIF ELSE IF keyword_set(galex) AND keyword_set(ukidss) THEN BEGIN
+   ndim= 11
+ENDIF ELSE IF keyword_set(galex) AND keyword_set(wise) THEN BEGIN
+   ndim=9
+ENDIF ELSE IF keyword_set(ukidss) AND keyword_set(wise) THEN BEGIN
    ndim= 11
 ENDIF ELSE IF keyword_set(galex) THEN BEGIN
    ndim= 7
 ENDIF ELSE IF keyword_set(ukidss) THEN BEGIN
    ndim= 9
+ENDIF ELSE IF kewyword_set(wise) THEN BEGIN
+   ndim= 7
 ENDIF ELSE BEGIN
    ndim= 5
 ENDELSE
