@@ -423,8 +423,7 @@ Contents:
 
 	Output:
 
-		out - structure containing pqso, ... , z array from zmin to zmax in 0.01 increments,
-		      z PDF at each value of z.
+		out - structure containing pqso, ... , z array from zmin to zmax in 0.01 increments, z PDF at each value of z.
 
 	History:
 
