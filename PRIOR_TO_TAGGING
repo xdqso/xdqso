@@ -1,0 +1,7 @@
+Prior to tagging, do the following:
+
+- change the version of the code in the 'wget ' section of doc/source/index.rst
+
+- change the version in doc/source/conf.py
+
+- svn ci all of that

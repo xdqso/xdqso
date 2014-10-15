@@ -13,6 +13,7 @@
 ;   KEYWORDS:
 ;      galex - use GALEX
 ;      ukidss - use UKIDSS
+;      wise - use WISE
 ;      plot - make QS plot
 ;   OUTPUT:
 ;      number of peaks
@@ -23,6 +24,7 @@
 ;               for all peaks
 ;   HISTORY:
 ;      2011-01-18 - Written - Bovy (NYU)
+;      2014-03-31 - Added WISE - DiPompeo (UWyo)
 ;-
 FUNCTION FWHM_ZPDF, thiszs, zpdf
 ii= n_elements(thiszs)
@@ -36,7 +38,7 @@ while zpdf[ii] LT maxp/2. do ii-= 1
 ztwo= thiszs[ii]
 return, (ztwo-zone)
 END
-FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, $
+FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, wise=wise $
                        peakz=peakz, nzs=nzs, plot=plot, $
                        xdqsoz=xdqsoz, peak_threshold=peak_threshold
 IF ~keyword_set(nzs) THEN  nzs= 1001
@@ -44,7 +46,7 @@ zs= dindgen(nzs)/(nzs-1d0)*5.2+0.3
 if ~keyword_set(peak_threshold) then peak_threshold= 1./5.2;;uniform distribution
 xdqsoz_zpdf, flux,$
   flux_ivar,$
-  galex=galex,ukidss=ukidss, $
+  galex=galex,ukidss=ukidss, wise=wise,$
   zmean=zmean,zcovar=zcovar,$
   zamp=zamp
 zpdf= eval_xdqsoz_zpdf(zs,zmean,zcovar,zamp)
@@ -108,7 +110,7 @@ IF arg_present(xdqsoz) THEN BEGIN
             ;;find fwhm
             allfwhm[ii]= fwhm_zpdf(thiszs,thiszpdf)
             ;;integrate to get the probability
-            allprob[ii]= marginalize_colorzprob(thiszs[0],thiszs[n_elements(thiszs)-1],flux,flux_ivar,galex=galex,ukidss=ukidss,norm=totprob)
+            allprob[ii]= xdqsoz_marginalize_colorzprob(thiszs[0],thiszs[n_elements(thiszs)-1],flux,flux_ivar,galex=galex,ukidss=ukidss,wise=wise,norm=totprob)
             if ii ne (npeaks-1) then peak_start= peak_indx[jj+1]
         endfor
         ;;normalize probabilities
