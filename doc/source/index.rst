@@ -158,7 +158,7 @@ Contents:
 
 .. _idl_xdqso_calculate_prob:
 
-**xdqso_calculate_prob** (in,/dereddened)
+**xdqso_calculate_prob** (in,/dereddened,/galex,/ukidss,/wise)
 
 	*calculate the extreme-deconvolution XDQSO QSO probability*
 
@@ -170,16 +170,11 @@ Contents:
 
 		dereddened - psfflux, and psfflux_ivar is already dereddened
 
-		galex - GALEX fluxes are included in input structure, with tags NUV, FUV, 
-		           NUV_ivar, and FUV_ivar.  GALEX fluxes are in nanomaggies
+		galex - GALEX fluxes are included in input structure, with tags NUV, FUV, NUV_ivar, and FUV_ivar.  GALEX fluxes are in nanomaggies
 
-		ukidss - UKIDSS fluxes are included in input structure, with tags APERCSIFLUX3_Y,
-                            APERCSIFLUX3_J,  APERCSIFLUX3_H,  APERCSIFLUX3_K, APERCSIFLUX3ERR_Y, 
-			    APERCSIFLUX3ERR_J, APERCSIFLUX3ERR_H, APERCSIFLUX3ERR_K.  Fluxes/errors are in SI units.
+		ukidss - UKIDSS fluxes are included in input structure, with tags APERCSIFLUX3_Y, APERCSIFLUX3_J,  APERCSIFLUX3_H,  APERCSIFLUX3_K, APERCSIFLUX3ERR_Y, APERCSIFLUX3ERR_J, APERCSIFLUX3ERR_H, APERCSIFLUX3ERR_K.  Fluxes/errors are in SI units.
 
-		wise - WISE fluxes are included in input structure, with tags w1_nanomaggies,
-		          w2_nanomaggies, w1_nanomaggies_ivar, w2_nanomaggies_ivar.  Fluxes are in
-		          Vega nanomaggies.
+		wise - WISE fluxes are included in input structure, with tags w1_nanomaggies, w2_nanomaggies, w1_nanomaggies_ivar, w2_nanomaggies_ivar.  Fluxes are in Vega nanomaggies.
 
 	Output:
 
@@ -195,7 +190,7 @@ Contents:
 
 .. _idl_xdqsoz_calculate_prob:
 
-**xdqsoz_calculate_prob** (in,zmin,zmax,/dereddened,/galex,/ukidss)
+**xdqsoz_calculate_prob** (in,zmin,zmax,/dereddened,/galex,/ukidss,wise)
 
 	*calculate the extreme-deconvolution probability ratio, marginalizing over an arbitrary redshift range*
 
@@ -209,16 +204,11 @@ Contents:
 
 		dereddened  - psfflux, and psfflux_ivar are already dereddened
 
-		galex - GALEX fluxes are included in input structure, with tags NUV, FUV, 
-		          NUV_ivar, and FUV_ivar.  GALEX fluxes are in nanomaggies
+		galex - GALEX fluxes are included in input structure, with tags NUV, FUV, NUV_ivar, and FUV_ivar.  GALEX fluxes are in nanomaggies
 
-		ukidss - UKIDSS fluxes are included in input structure, with tags APERCSIFLUX3_Y,
-                  		APERCSIFLUX3_J,  APERCSIFLUX3_H,  APERCSIFLUX3_K, APERCSIFLUX3ERR_Y,   
-          	                APERCSIFLUX3ERR_J, APERCSIFLUX3ERR_H, APERCSIFLUX3ERR_K.  Fluxes/errors are in SI units.
+		ukidss - UKIDSS fluxes are included in input structure, with tags APERCSIFLUX3_Y, APERCSIFLUX3_J,  APERCSIFLUX3_H,  APERCSIFLUX3_K, APERCSIFLUX3ERR_Y, APERCSIFLUX3ERR_J, APERCSIFLUX3ERR_H, APERCSIFLUX3ERR_K.  Fluxes/errors are in SI units.
 
-		wise - WISE fluxes are included in input structure, with tags w1_nanomaggies,
-		           w2_nanomaggies, w1_nanomaggies_ivar, w2_nanomaggies_ivar.  Fluxes are in
-		           Vega nanomaggies.
+		wise - WISE fluxes are included in input structure, with tags w1_nanomaggies, w2_nanomaggies, w1_nanomaggies_ivar, w2_nanomaggies_ivar.  Fluxes are in Vega nanomaggies.
 
 
 	Output:
@@ -259,7 +249,7 @@ Contents:
 
 .. _idl_xdqsoz_marginalize_colorzprob:
 
-**xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,norm=norm,/log)
+**xdqsoz_marginalize_colorzprob** (zmin,zmax,flux,flux_ivar,/galex,/ukidss,/wise,norm=norm,/log)
 
 	*marginalize the probability of a relative flux + redshift (not a color) over redshift*
 
@@ -298,7 +288,7 @@ Contents:
 
 .. _idl_xdqsoz_peaks:
 
-**xdqsoz_peaks** (flux,flux_ivar,nzs=nzs,peak_threshold=peak_threshold,/galex,/ukidss,/plot,peakz=peakz,xdqsoz=xdqsoz)
+**xdqsoz_peaks** (flux,flux_ivar,nzs=nzs,peak_threshold=peak_threshold,/galex,/ukidss,/wise,/plot,peakz=peakz,xdqsoz=xdqsoz)
 
         *calculate the number of peaks of a zpdf as well as the MAP z*
 
@@ -343,7 +333,7 @@ Contents:
 
 .. _idl_xdqsoz_qso_track:
 
-**xdqsoz_qso_track** (z,i=i,/galex,/ukidss)
+**xdqsoz_qso_track** (z,i=i,/galex,/ukidss,/wise)
 
         *calculate the mean quasar locus*
 
@@ -376,7 +366,7 @@ Contents:
 
 .. _idl_xdqsoz_zpdf:
 
-**xdqsoz_zpdf**, flux, flux_ivar, /galex, /ukidss, zmean=zmean, zcovar=zcovar, zamp=zamp
+**xdqsoz_zpdf**, flux, flux_ivar, /galex, /ukidss, /wise, zmean=zmean, zcovar=zcovar, zamp=zamp
 
 	*calculate the photometric redshift pdf using XDQSOz*
 
@@ -411,7 +401,7 @@ Contents:
 
 .. _idl_xdqsoz_calculate_prob_andz:
 
-**xdqsoz_calculate_prob** (in,zmin,zmax,/dereddened,/galex,/ukidss)
+**xdqsoz_calculate_prob_andz** (in,zmin,zmax,/dereddened,/galex,/ukidss,/wise)
 
 	*The same as xdqsoz_calculate_prob, with xdqsoz_zpdf wrapped in to simultaneously calculate z PDF*
 
@@ -439,8 +429,6 @@ Contents:
 	History:
 
 		2014-03-31 - Written - DiPompeo (UWyo)
-
-
 
 
 
