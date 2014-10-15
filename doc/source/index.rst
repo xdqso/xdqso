@@ -121,7 +121,7 @@ problems.
 
 An updated version of the catalog is available at 
 
-???
+[link to be inserted - please contact code owners for temporary link]
 
 which includes updated probabilities incorporporating WISE fluxes, and
 photometric redshift PDFs for all objects with P(quasar) > 0.2.  Like the
