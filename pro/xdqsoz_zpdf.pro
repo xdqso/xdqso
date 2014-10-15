@@ -4,7 +4,7 @@
 ;   PURPOSE:
 ;      calculate the photometric redshift pdf for XDQSOZ
 ;   USE:
-;      xdqsoz_zpdf, flux, flux_ivar, /galex, /ukidss, zmean=zmean,
+;      xdqsoz_zpdf, flux, flux_ivar, /galex, /ukidss, /wise, zmean=zmean,
 ;      zcovar=zcovar, zamp=zamp
 ;   INPUT:
 ;      flux - [nfluxes] or [nfluxes,ndata] array of fluxes
@@ -12,24 +12,24 @@
 ;   KEYWORDS:
 ;      galex - use GALEX fits
 ;      ukidss - use UKIDSS
+;      wise - use WISE
 ;   OUTPUT:
 ;      zmean - [ngauss,ndata] array of means
 ;      zcovar - [ngauss,ndata] array of covars
 ;      zamp - [ngauss,ndata] array of amplitudes
 ;   HISTORY:
 ;      2011-01-18 - Written - Bovy (NYU)
+;      2014-04-02 - Added WISE - DiPompeo (UWyo)
 ;-
-PRO XDQSOZ_ZPDF, flux, flux_ivar, galex=galex, ukidss=ukidss, $
+PRO XDQSOZ_ZPDF, flux, flux_ivar, galex=galex, ukidss=ukidss, wise=wise, $
                  zmean=zmean, zcovar=zcovar, zamp=zamp
 ;;check for environment variable
 path= getenv('XDQSODATA')
-if strcmp(path,'') then _SAVEDIR= path_sep(/parent)+path_sep()+'data' $
-else _SAVEDIR = '$XDQSODATA'
-result= strpos(_SAVEDIR,path_sep(),/reverse_search)
-if result ne (strlen(_SAVEDIR)-1) then _SAVEDIR= _SAVEDIR+path_sep()
+if strcmp(path,'') then _SAVEDIR= '../data/' else _SAVEDIR = '$XDQSODATA/'
 savefilename= _SAVEDIR+'xdqsoz_relflux_fits'
 IF keyword_set(galex) THEN savefilename+= '_galex'
 IF keyword_set(ukidss) THEN savefilename+= '_ukidss'
+IF keyword_set(wise) THEN savefilename+= '_wise'
 savefilename+= '.fits'
 
 b= 1.8;;Magnitude softening
@@ -62,7 +62,7 @@ FOR ii=0L, nbins-1 DO BEGIN
     ;;Load solution
     fits= mrdfits(savefilename,ii+1,/silent)
     ;;Marginalize over redshift first
-    ngauss= n_elements(fits.amp)
+    ngauss= n_elements(fits.xamp)
     ndimx= n_elements(fits.xmean)/ngauss
     thisxmean= fits.xmean[1:ndimx-1,*]
     thisxcovar= fits.xcovar[1:ndimx-1,1:ndimx-1,*]

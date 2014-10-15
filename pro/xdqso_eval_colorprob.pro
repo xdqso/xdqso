@@ -12,19 +12,18 @@
 ;      bossz - mid-z quasars;
 ;      galex - use GALEX
 ;      ukidss - use UKIDSS
+;      wise - use WISE
 ;   OUTPUT:
 ;      likelihood
 ;   HISTORY:
 ;      2010 - Written - Bovy (NYU)
+;      2014-03-31 - Added WISE - DiPompeo (Uwyo)
 ;-
 FUNCTION XDQSO_EVAL_COLORPROB, flux, flux_ivar, qso=qso, lowz=lowz, $
-                               midz=midz, galex=galex, ukidss=ukidss
+                               midz=midz, galex=galex, ukidss=ukidss, wise=wise
 ;;check for environment variable
 path= getenv('XDQSODATA')
-if strcmp(path,'') then _SAVEDIR= path_sep(/parent)+path_sep()+'data' $
-else _SAVEDIR = '$XDQSODATA'
-result= strpos(_SAVEDIR,path_sep(),/reverse_search)
-if result ne (strlen(_SAVEDIR)-1) then _SAVEDIR= _SAVEDIR+path_sep()
+if strcmp(path,'') then _SAVEDIR= '../data/' else _SAVEDIR = '$XDQSODATA/'
 IF keyword_set(qso) AND keyword_set(lowz) THEN BEGIN
     savefilename= _SAVEDIR+'xdqso_relflux_fits_qsolowz'
 ENDIF ELSE IF keyword_set(qso) AND keyword_set(midz) THEN BEGIN
@@ -36,6 +35,7 @@ ENDIF ELSE BEGIN
 ENDELSE
 IF keyword_set(galex) THEN savefilename+= '_galex'
 IF keyword_set(ukidss) THEN savefilename+= '_ukidss'
+IF keyword_set(wise) THEN savefilename+= '_wise'
 savefilename+= '.fits'
 
 b= 1.8;;Magnitude softening
