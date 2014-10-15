@@ -9,8 +9,14 @@
 ;      in - structure containing PSFFLUX, PSFFLUX_IVAR, EXTINCTION
 ;   KEYWORDS:
 ;      dereddened - psfflux, and psfflux_ivar is already dereddened
-;      galex - GALEX fluxes are included in psfflux, psfflux_ivar, and
-;              extinction; use them
+;      galex - GALEX fluxes are included (in tags nuv and fuv, with
+;              associated tags for the ivar), use
+;              them
+;      ukidss - UKDISS fluxes are included (in tags APERCSIFLUX3_Y,
+;               APERCSIFLUX3_J,  APERCSIFLUX3_H,  APERCSIFLUX3_K, with
+;               associated tags for the errors), use them 
+;      wise - WISE fluxes are included (in tags w1_nanomaggies,
+;             w2_nanomaggies, with associated tags for the ivar), use them
 ;   OUTPUT:
 ;      out - structure containing pqso, ... (see catalog description)
 ;   HISTORY:
