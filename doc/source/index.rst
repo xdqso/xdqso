@@ -121,7 +121,7 @@ problems.
 
 An updated version of the catalog is available at 
 
-[link to be inserted - please contact code owners for temporary link]
+http://www.mpia.de/homes/joe/xdqsozcat_galex_ukidss_wise_p20.fits.gz
 
 which includes updated probabilities incorporporating WISE fluxes, and
 photometric redshift PDFs for all objects with P(quasar) > 0.2.  Like the
@@ -129,7 +129,8 @@ first catalog, it only includes objects that pass the BOSS quasar selection
 flag cuts and objects with i_0 < 21.5.  There are tags to indicate if an object
 falls within the SDSS bright star mask, a region of bad SDSS photometry, 
 an area with bad u-columns, or near contaminated WISE data.  The same precautions
-as above apply to the new catalog.
+as above apply to the new catalog.  A catalog containing quasar/star probabilities 
+for all point sources in SDSS DR8 is available upon request.
 
 
 .. _idl:
