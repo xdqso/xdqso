@@ -123,6 +123,8 @@ An updated version of the catalog is available at
 
 http://www.mpia.de/homes/joe/xdqsozcat_galex_ukidss_wise_p20.fits.gz
 
+http://www.mpia.de/homes/joe/README_pqso0.2_wise
+
 which includes updated probabilities incorporporating WISE fluxes, and
 photometric redshift PDFs for all objects with P(quasar) > 0.2.  Like the
 first catalog, it only includes objects that pass the BOSS quasar selection 
