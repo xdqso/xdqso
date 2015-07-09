@@ -121,7 +121,9 @@ problems.
 
 An updated version of the catalog is available at 
 
-[link to be inserted - please contact code owners for temporary link]
+http://www.mpia.de/homes/joe/xdqsozcat_galex_ukidss_wise_p20.fits.gz
+
+http://www.mpia.de/homes/joe/README_pqso0.2_wise
 
 which includes updated probabilities incorporporating WISE fluxes, and
 photometric redshift PDFs for all objects with P(quasar) > 0.2.  Like the
@@ -129,7 +131,8 @@ first catalog, it only includes objects that pass the BOSS quasar selection
 flag cuts and objects with i_0 < 21.5.  There are tags to indicate if an object
 falls within the SDSS bright star mask, a region of bad SDSS photometry, 
 an area with bad u-columns, or near contaminated WISE data.  The same precautions
-as above apply to the new catalog.
+as above apply to the new catalog.  A catalog containing quasar/star probabilities 
+for all point sources in SDSS DR8 is available upon request.
 
 
 .. _idl:
@@ -444,7 +447,7 @@ Please cite the relevant papers among the following:
        Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, ApJ, **749**, 41 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/749/1/41>`_ `[ADS] <http://adsabs.harvard.edu/abs/2012ApJ...749...41B>`_
 
 
-       *Incorporating WISE Photometry into Quasar Probabilities and Photometric Redshift Estimation With XDQSOz*, DiPompeo,M.A., et al., 2014, in preparation
+       *Quasar Probabilities and Redshifts from WISE mid-IR through GALEX UV Photometry*, DiPompeo,M.A., et al., 2014, in preparation
 
 
        Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2015, in preparation
