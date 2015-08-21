@@ -447,7 +447,7 @@ Please cite the relevant papers among the following:
        Photometric redshifts: *Photometric redshifts and quasar probabilities from a single, data-driven generative model*, Bovy, J., et al., 2011, ApJ, **749**, 41 `[ApJ] <http://dx.doi.org/10.1088/0004-637X/749/1/41>`_ `[ADS] <http://adsabs.harvard.edu/abs/2012ApJ...749...41B>`_
 
 
-       Updated XDQSO with WISE: *Quasar Probabilities and Redshifts from WISE mid-IR through GALEX UV Photometry*, DiPompeo,M.A., et al., 2015, MNRAS, **452**, 3124 `[MNRAS] <http://mnras.oxfordjournals.org/content/452/3/3124.abstract?sid=83302a57-9e69-41be-a8a6-5f92fa1ca0d1>`_ `[ADS] <http://adsabs.harvard.edu/abs/2015MNRAS.452.3124D>`_
+       Updated XDQSO with WISE: *Quasar Probabilities and Redshifts from WISE mid-IR through GALEX UV Photometry*, DiPompeo,M.A., et al., 2015, MNRAS, **452**, 3124 `[MNRAS] <http://dx.doi.org/10.1093/mnras/stv1562>`_ `[ADS] <http://adsabs.harvard.edu/abs/2015MNRAS.452.3124D>`_
 
 
        Catalog paper: *The SDSS-XDQSO photometric quasar catalog*, Myers, A. D., et al., 2015, in preparation
