@@ -49,7 +49,7 @@ xdqsoz_zpdf, flux,$
   galex=galex,ukidss=ukidss, wise=wise,$
   zmean=zmean,zcovar=zcovar,$
   zamp=zamp
-zpdf= eval_xdqsoz_zpdf(zs,zmean,zcovar,zamp)
+zpdf= xdqsoz_eval_zpdf(zs,zmean,zcovar,zamp)
 IF keyword_set(plot) THEN BEGIN
     djs_plot, zs, zpdf
     djs_oplot, [zs[0],zs[nzs-1]],[peak_threshold,peak_threshold]
