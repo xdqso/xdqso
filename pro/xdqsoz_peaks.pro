@@ -38,7 +38,7 @@ while zpdf[ii] LT maxp/2. do ii-= 1
 ztwo= thiszs[ii]
 return, (ztwo-zone)
 END
-FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, wise=wise $
+FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, wise=wise, $
                        peakz=peakz, nzs=nzs, plot=plot, $
                        xdqsoz=xdqsoz, peak_threshold=peak_threshold
 IF ~keyword_set(nzs) THEN  nzs= 1001
