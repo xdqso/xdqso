@@ -38,7 +38,7 @@ while zpdf[ii] LT maxp/2. do ii-= 1
 ztwo= thiszs[ii]
 return, (ztwo-zone)
 END
-FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, wise=wise $
+FUNCTION XDQSOZ_PEAKS, flux, flux_ivar, galex=galex,ukidss=ukidss, wise=wise, $
                        peakz=peakz, nzs=nzs, plot=plot, $
                        xdqsoz=xdqsoz, peak_threshold=peak_threshold
 IF ~keyword_set(nzs) THEN  nzs= 1001
@@ -49,7 +49,7 @@ xdqsoz_zpdf, flux,$
   galex=galex,ukidss=ukidss, wise=wise,$
   zmean=zmean,zcovar=zcovar,$
   zamp=zamp
-zpdf= eval_xdqsoz_zpdf(zs,zmean,zcovar,zamp)
+zpdf= xdqsoz_eval_zpdf(zs,zmean,zcovar,zamp)
 IF keyword_set(plot) THEN BEGIN
     djs_plot, zs, zpdf
     djs_oplot, [zs[0],zs[nzs-1]],[peak_threshold,peak_threshold]
