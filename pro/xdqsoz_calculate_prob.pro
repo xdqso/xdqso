@@ -118,8 +118,8 @@ IF (keyword_set(galex) OR keyword_set(ukidss) OR keyword_set(wise)) THEN BEGIN
 ENDIF
 
 IF ~keyword_set(dereddened) THEN BEGIN
-    flux= xdqso_sdss_deredden(in.psfflux,in.extinction)
-    flux_ivar=xdqso_sdss_deredden_error(in.psfflux_ivar,in.extinction)
+    flux= xdqso_sdss_deredden(flux,extinction)
+    flux_ivar=xdqso_sdss_deredden_error(flux_ivar,extinction)
 ENDIF
 
 
